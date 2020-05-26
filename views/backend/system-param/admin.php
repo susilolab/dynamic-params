@@ -2,6 +2,7 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii2mod\editable\EditableColumn;
 
 /* @var $this yii\web\View */
@@ -20,22 +21,16 @@ $attributesMap = Yii::$app->get('systemparams')->modelMap['systemParam']['class'
         'filterModel' => $searchModel,
         'columns' => [
             $attributesMap['fieldParamKey'],
+            $attributesMap['fieldParamValue'],
             $attributesMap['fieldDescription'],
             [
-                'class' => EditableColumn::className(),
-                'attribute' => $attributesMap['fieldParamValue'],
-                'url' => ['update'],
-                'editableOptions' => function ($model) {
-                    switch ($model->validator) {
-                        case 'boolean':
-                            return [
-                                'type' => 'select',
-                                'source' => [1 => 'Active', 0 => 'Unactive'],
-                            ];
-                        default:
-                            return [];
+                'class' => 'yii\grid\ActionColumn',
+                'header' => Yii::t('app', 'Options'),
+                'buttons' => [
+                    'update' => function($url, $model, $key) {
+                        return Html::a('Update', Url::to(['/params/update', 'id' => $model->param_key]));
                     }
-                },
+                ],
             ],
         ],
     ]); ?>

@@ -31,6 +31,9 @@ class SystemParamCommand extends Controller
     {
         $alias = Yii::getAlias($this->paramsAlias);
         $params = include_once($alias);
+        if (!is_array($params)) {
+            throw new \Exception('params should be array!.');
+        }
 
         $service = new SystemParamsService();
 

@@ -65,7 +65,7 @@ class SystemParams extends Component implements BootstrapInterface
             Yii::$app->controllerMap = array_filter(Yii::$app->controllerMap);
         }
 
-        Yii::setAlias('@yiicod', realpath(dirname(__FILE__) . '/..'));
+        Yii::setAlias('@susilolab', realpath(dirname(__FILE__) . '/..'));
     }
 
     /**

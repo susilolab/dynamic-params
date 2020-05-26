@@ -159,6 +159,7 @@ class SystemParamsService
                 $model->{$paramModel::attributesMap()['fieldParamValue']} = is_bool($value['value']) ? intval($value['value']) : $value['value'];
                 $model->{$paramModel::attributesMap()['fieldValidator']} = isset($value['validator']) ? $value['validator'] : 'string';
                 $model->{$paramModel::attributesMap()['fieldDescription']} = isset($value['description']) ? $value['description'] : '';
+
             } else {
                 $model->{$paramModel::attributesMap()['fieldParamValue']} = is_bool($value) ? intval($value) : $value;
                 $model->{$paramModel::attributesMap()['fieldValidator']} = 'string';
